@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 
 class Homepage extends StatefulWidget {
@@ -32,23 +33,60 @@ class _HomepageState extends State<Homepage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Container(
-                          height: 33,
-                          width: 33,
+                          height: 30,
+                          width: 30,
                           decoration: BoxDecoration(
-                              border: Border.all(color: Colors.black, width: 1),
-                              color: const Color.fromARGB(255, 5, 69, 21),
+                              border: Border.all(
+                                  color:
+                                      const Color.fromARGB(255, 245, 242, 242),
+                                  width: 1),
+                              color: const Color.fromARGB(255, 5, 104, 30),
                               borderRadius: BorderRadius.circular(20)),
                           child: Center(
                               child: Icon(
                             Icons.person,
-                            size: 19,
+                            size: 10,
                             color: Colors.white,
                           ))),
-                      Text(
-                        "Sticky Header Example",
-                        style: TextStyle(fontSize: 15),
+                      Container(
+                        height: 40,
+                        // padding: EdgeInsets.only(top: 20),
+                        // color: Colors.red,
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Image.asset(
+                                  "assets/placeholder1.png",
+                                  height: 10,
+                                ),
+                                SizedBox(
+                                  width: 5,
+                                ),
+                                Text(
+                                  "Location",
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.white),
+                                ),
+                              ],
+                            ),
+                            Text(
+                              "Katraj , Pune",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 12,
+                                  color: Colors.white),
+                            )
+                          ],
+                        ),
                       ),
-                      Icon(Icons.alarm),
+                      SvgPicture.asset(
+                        "assets/notiy.svg",
+                        width: 16,
+                        color: Colors.white,
+                      ),
                     ],
                   ),
                 ),
@@ -117,7 +155,7 @@ class _SearchBarDelegate extends SliverPersistentHeaderDelegate {
           hintText: "Search...",
           prefixIcon: Icon(Icons.search),
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(10),
+            borderRadius: BorderRadius.circular(25),
           ),
           filled: true,
           fillColor: Colors.grey[200],
