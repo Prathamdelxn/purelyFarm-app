@@ -16,8 +16,9 @@ class _LandingpageState extends State<Landingpage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          SizedBox(height: size.height * 0.02),
           Image.asset(
             "assets/image.png",
             width: size.width,
@@ -26,13 +27,13 @@ class _LandingpageState extends State<Landingpage> {
           ),
           Expanded(
             child: SizedBox(
-              height: size.height * 0.4,
-              width: size.width * 0.9,
+              height: size.height,
+              width: size.width,
               child: Stack(
                 children: [
                   Positioned(
-                    top: size.height * 0.06,
-                    left: size.width * 0.08,
+                    top: size.height * 0.05,
+                    left: size.width * 0.1,
                     child: Container(
                       height: size.height * 0.41,
                       width: size.width * 0.8,
@@ -43,7 +44,7 @@ class _LandingpageState extends State<Landingpage> {
                     ),
                   ),
                   Positioned(
-                    top: size.height * 0.07,
+                    top: size.height * 0.065,
                     left: size.width * 0.15,
                     child: SizedBox(
                       width: size.width * 0.7,
@@ -57,7 +58,7 @@ class _LandingpageState extends State<Landingpage> {
                     ),
                   ),
                   Positioned(
-                    bottom: size.height * 0.05,
+                    bottom: size.height * 0.09,
                     left: size.width * 0.15,
                     child: SizedBox(
                       width: size.width * 0.7,
@@ -71,8 +72,8 @@ class _LandingpageState extends State<Landingpage> {
                     ),
                   ),
                   Positioned(
-                    top: size.height * 0.01,
-                    left: size.width * 0.4,
+                    // top: size.height * 0.01,
+                    left: size.width * 0.379,
                     child: Container(
                       height: size.height * 0.12,
                       width: size.width * 0.25,
@@ -95,7 +96,7 @@ class _LandingpageState extends State<Landingpage> {
                           Text(
                             "Quick Delivery At Your Door Step",
                             style: TextStyle(
-                              fontSize: size.width * 0.06,
+                              fontSize: size.width * 0.065,
                               fontWeight: FontWeight.w600,
                             ),
                             textAlign: TextAlign.center,
@@ -106,7 +107,7 @@ class _LandingpageState extends State<Landingpage> {
                           Text(
                             "Your Parcel , Our Priority",
                             style: TextStyle(
-                              fontSize: size.width * 0.04,
+                              fontSize: size.width * 0.045,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
