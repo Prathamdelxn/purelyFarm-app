@@ -250,7 +250,7 @@
 //     );
 //   }
 // }import 'package:ecom/CustomPageRoute.dart';
-import 'package:ecom/CustomPageRoute.dart';
+import 'package:ecom/screens/CustomPageRoute.dart';
 import 'package:ecom/authentication/otp.dart';
 import 'package:flutter/material.dart';
 

@@ -1,4 +1,5 @@
-import 'package:ecom/splashscreen.dart';
+import 'package:ecom/screens/CategoriesPage.dart';
+import 'package:ecom/screens/splashscreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,7 +17,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: Splashscreen(),
+      // home: Splashscreen(),
+      home: CategoriesPage(),
     );
   }
 }

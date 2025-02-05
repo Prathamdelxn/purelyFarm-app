@@ -1,4 +1,4 @@
-import 'package:ecom/homePage.dart';
+import 'package:ecom/screens/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
