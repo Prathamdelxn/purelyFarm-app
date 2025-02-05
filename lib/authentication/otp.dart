@@ -1,3 +1,4 @@
+import 'package:ecom/screens/NavigationPage.dart';
 import 'package:ecom/screens/homePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
@@ -90,12 +91,18 @@ class _OtpPageState extends State<OtpPage> {
             SizedBox(height: 100),
             GestureDetector(
               onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => Homepage()));
+                Navigator.push(
+                    context,
+                    // MaterialPageRoute(builder: (context) => Homepage()));
+                    MaterialPageRoute(builder: (context) => HomePage()));
               },
               child: Container(
                 height: 50,
                 width: 250,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: const Color.fromARGB(255, 10, 109, 25),
+                ),
                 child: Center(
                   child: Text(
                     "Verify",
@@ -104,10 +111,6 @@ class _OtpPageState extends State<OtpPage> {
                         color: Colors.white,
                         fontSize: 20),
                   ),
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: const Color.fromARGB(255, 10, 109, 25),
                 ),
               ),
             )

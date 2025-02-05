@@ -1,4 +1,4 @@
-import 'package:ecom/screens/CategoriesPage.dart';
+import 'package:ecom/screens/NavigationPage.dart';
 import 'package:ecom/screens/splashscreen.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       // home: Splashscreen(),
-      home: CategoriesPage(),
+      home: NavigationPage(),
     );
   }
 }

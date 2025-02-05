@@ -39,6 +39,7 @@ dependencies:
   flutter_otp_text_field: ^1.4.0+2
   sticky_headers: ^0.3.0+2
   flutter_svg: ^2.0.17
+  circle_bottom_navigation: ^2.0.0
 
 dev_dependencies:
   flutter_test:

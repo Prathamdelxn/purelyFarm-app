@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:sticky_headers/sticky_headers.dart';
 
-class Homepage extends StatefulWidget {
-  const Homepage({super.key});
+class HomePage extends StatefulWidget {
+  const HomePage({super.key});
 
   @override
-  State<Homepage> createState() => _HomepageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _HomepageState extends State<Homepage> {
+class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
