@@ -62,6 +62,12 @@ class _ProductDetailsState extends State<ProductDetails> {
     },
   ];
 
+  final List<String> productImages = [
+    'assets/images/tomato.png',
+    'assets/images/onion.png', // Add your additional image assets
+    'assets/images/tomato.png', // Add your additional image assets
+  ];
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -69,97 +75,116 @@ class _ProductDetailsState extends State<ProductDetails> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
-          // crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              width: width,
-              height: height * 0.4,
-              padding: EdgeInsets.symmetric(horizontal: 10, vertical: 35),
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/images/tomato.png'),
-                  fit: BoxFit.fitWidth,
-                ),
-              ),
-              child: Stack(
-                children: [
-                  Row(
-                    children: [
-                      _buildCircleWithIcon(Icons.arrow_back, () {
-                        Navigator.of(context).pop();
-                      }),
-                      const Spacer(),
-                      SizedBox(width: 16),
-                      _buildCircleWithIcon(Icons.upload, () {}),
-                    ],
-                  )
-                ],
-              ),
-            ),
+            ProductImageCarousel(images: productImages),
             Container(
               padding: EdgeInsets.symmetric(vertical: 16, horizontal: 13),
               margin: EdgeInsets.symmetric(vertical: 10, horizontal: 8),
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(30), color: Colors.white, boxShadow: [
-                BoxShadow(
-                  blurRadius: 6,
-                  spreadRadius: 2,
-                  offset: Offset(0, 4),
-                  color: Colors.grey,
-                )
-              ]),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(30),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    blurRadius: 6,
+                    spreadRadius: 2,
+                    offset: Offset(0, 4),
+                    color: Colors.grey,
+                  ),
+                ],
+              ),
               child: Column(
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  Row(
                     children: [
-                      Text(
-                        "Tomato",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 22,
-                        ),
-                      ),
-                      Text(
-                        "500 Gram",
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 18,
-                          color: Colors.grey,
-                        ),
-                      ),
-                      Row(
-                        spacing: 10,
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "₹20",
+                            "Tomato",
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
-                              fontSize: 19,
+                              fontSize: 22,
                             ),
                           ),
                           Text(
-                            "MRP ₹26",
-                            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: Colors.grey),
+                            "500 Gram",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18,
+                              color: Colors.grey,
+                            ),
                           ),
-                          Container(
-                            padding: EdgeInsets.symmetric(horizontal: 4, vertical: 1),
-                            decoration: BoxDecoration(
-                              color: const Color.fromARGB(255, 147, 200, 243),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Colors.grey.withOpacity(0.6),
-                                  offset: Offset(0, 5),
-                                  blurRadius: 4,
-                                  spreadRadius: 0.2,
+                          Row(
+                            spacing: 10,
+                            children: [
+                              Text(
+                                "₹20",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 19,
                                 ),
-                              ],
-                            ),
-                            child: Text(
-                              "23 % Off",
-                              style: TextStyle(color: const Color.fromARGB(255, 10, 20, 207), fontWeight: FontWeight.bold, fontSize: 11),
-                            ),
+                              ),
+                              Text(
+                                "MRP ₹26",
+                                style: TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13,
+                                    color: Colors.grey),
+                              ),
+                              Container(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 4, vertical: 1),
+                                decoration: BoxDecoration(
+                                  color:
+                                      const Color.fromARGB(255, 147, 200, 243),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.6),
+                                      offset: Offset(0, 5),
+                                      blurRadius: 4,
+                                      spreadRadius: 0.2,
+                                    ),
+                                  ],
+                                ),
+                                child: Text(
+                                  "23 % Off",
+                                  style: TextStyle(
+                                      color: const Color.fromARGB(
+                                          255, 10, 20, 207),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 11),
+                                ),
+                              ),
+                            ],
                           ),
                         ],
+                      ),
+                      Spacer(),
+                      Container(
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                        margin:
+                            EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: Colors.green,
+                          boxShadow: [
+                            BoxShadow(
+                              blurRadius: 6,
+                              spreadRadius: 2,
+                              offset: Offset(0, 4),
+                              color: Colors.grey,
+                            ),
+                          ],
+                        ),
+                        child: Text(
+                          "Buy",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 22,
+                            color: Colors.white,
+                          ),
+                        ),
                       ),
                     ],
                   ),
@@ -192,15 +217,20 @@ class _ProductDetailsState extends State<ProductDetails> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      DetailsContainer("assets/images/fresh.png", "Sourced", "Fresh Daily"),
-                      DetailsContainer("assets/images/quality.png", "Quality", "Assured"),
-                      DetailsContainer("assets/images/replacement.png", "48 Hours", "Replacement"),
-                      DetailsContainer("assets/images/delivery.png", "Fast", "Delivery"),
+                      DetailsContainer(
+                          "assets/images/fresh.png", "Sourced", "Fresh Daily"),
+                      DetailsContainer(
+                          "assets/images/quality.png", "Quality", "Assured"),
+                      DetailsContainer("assets/images/replacement.png",
+                          "48 Hours", "Replacement"),
+                      DetailsContainer(
+                          "assets/images/delivery.png", "Fast", "Delivery"),
                     ],
                   ),
                 ],
               ),
             ),
+         
             SizedBox(height: 4),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -274,7 +304,8 @@ class _ProductDetailsState extends State<ProductDetails> {
     );
   }
 
-  Widget ProductCard(String image, String name, String weight, double newprice, double oldprice, String off) {
+  Widget ProductCard(String image, String name, String weight, double newprice,
+      double oldprice, String off) {
     return Container(
       margin: EdgeInsets.only(right: 15),
       decoration: BoxDecoration(
@@ -312,7 +343,10 @@ class _ProductDetailsState extends State<ProductDetails> {
                 const SizedBox(height: 2),
                 Text(
                   weight,
-                  style: TextStyle(color: Colors.grey[600], fontSize: 14, fontWeight: FontWeight.w500),
+                  style: TextStyle(
+                      color: Colors.grey[600],
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500),
                 ),
                 Text(
                   name,
@@ -400,23 +434,112 @@ class _ProductDetailsState extends State<ProductDetails> {
       ),
     );
   }
+}
 
-  Widget _buildCircleWithIcon(IconData icon, VoidCal) {
-    return Container(
-      width: 45,
-      height: 45,
-      decoration: BoxDecoration(
-        color: Colors.white,
-        shape: BoxShape.circle,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            blurRadius: 5,
-            spreadRadius: 2,
+class ProductImageCarousel extends StatefulWidget {
+  final List<String> images;
+
+  const ProductImageCarousel({
+    Key? key,
+    required this.images,
+  }) : super(key: key);
+
+  @override
+  State<ProductImageCarousel> createState() => _ProductImageCarouselState();
+}
+
+class _ProductImageCarouselState extends State<ProductImageCarousel> {
+  int _currentIndex = 0;
+  final PageController _pageController = PageController();
+
+  @override
+  Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height * 0.4;
+
+    return Stack(
+      children: [
+        Container(
+          width: width,
+          height: height,
+          child: PageView.builder(
+            controller: _pageController,
+            onPageChanged: (index) {
+              setState(() {
+                _currentIndex = index;
+              });
+            },
+            itemCount: widget.images.length,
+            itemBuilder: (context, index) {
+              return Container(
+                padding: EdgeInsets.symmetric(horizontal: 10, vertical: 35),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: AssetImage(widget.images[index]),
+                    fit: BoxFit.fitWidth,
+                  ),
+                ),
+              );
+            },
           ),
-        ],
-      ),
-      child: Center(
+        ),
+        Positioned(
+          top: 35,
+          left: 10,
+          right: 10,
+          child: Row(
+            children: [
+              _buildCircleWithIcon(Icons.arrow_back, () {
+                Navigator.pop(context);
+              }),
+              const Spacer(),
+              _buildCircleWithIcon(Icons.upload, () {}),
+            ],
+          ),
+        ),
+        Positioned(
+          bottom: 20,
+          left: 0,
+          right: 0,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+              widget.images.length,
+              (index) => Container(
+                margin: EdgeInsets.symmetric(horizontal: 4),
+                width: 8,
+                height: 8,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  color: _currentIndex == index
+                      ? Colors.white
+                      : Colors.white.withOpacity(0.5),
+                ),
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildCircleWithIcon(IconData icon, VoidCallback onPressed) {
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        width: 45,
+        height: 45,
+        decoration: BoxDecoration(
+          color: Colors.white,
+          shape: BoxShape.circle,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.2),
+              blurRadius: 5,
+              spreadRadius: 2,
+            ),
+          ],
+        ),
         child: Icon(
           icon,
           color: Colors.black,
