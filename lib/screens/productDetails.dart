@@ -1,7 +1,10 @@
 import 'dart:developer';
 
+import 'package:ecom/screens/cartPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class ProductDetails extends StatefulWidget {
   const ProductDetails({super.key});
@@ -68,10 +71,106 @@ class _ProductDetailsState extends State<ProductDetails> {
     'assets/images/tomato.png', // Add your additional image assets
   ];
 
+  int count = 1;
+
+  Future<void> bottomsheet(BuildContext context) {
+    return showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+            color: Colors.white,
+            height: 100, // Adjust height as needed
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Cartpage()));
+                  },
+                  child: Container(
+                    height: 70,
+                    width: 200,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                            color: const Color.fromARGB(255, 6, 93, 9),
+                            width: 2)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.shopping_cart,
+                          size: 30,
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Text(
+                          "View Cart",
+                          style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700,
+                              color: Colors.black),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+                Container(
+                  height: 70,
+                  width: 200,
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    color: const Color.fromARGB(255, 7, 77, 10),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          setState(() {
+                            count++;
+                          });
+                        },
+                        icon: Icon(
+                          Icons.add,
+                          size: 24,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        "$count",
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700),
+                      ),
+                      IconButton(
+                        onPressed: () {
+                          setState(() {
+                            count--;
+                          });
+                        },
+                        icon: Icon(
+                          Icons.remove,
+                          color: Colors.white,
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ));
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
+
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -160,29 +259,42 @@ class _ProductDetailsState extends State<ProductDetails> {
                         ],
                       ),
                       Spacer(),
-                      Container(
-                        padding:
-                            EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-                        margin:
-                            EdgeInsets.symmetric(vertical: 8, horizontal: 8),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(10),
-                          color: Colors.green,
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 6,
-                              spreadRadius: 2,
-                              offset: Offset(0, 4),
-                              color: Colors.grey,
+                      GestureDetector(
+                        onTap: () {
+                          showTopSnackBar(
+                            Overlay.of(context),
+                            const CustomSnackBar.info(
+                              message: 'Product added into cart',
                             ),
-                          ],
-                        ),
-                        child: Text(
-                          "Buy",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22,
-                            color: Colors.white,
+                          );
+                          setState(() {
+                            bottomsheet(context);
+                          });
+                        },
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 10, horizontal: 20),
+                          margin:
+                              EdgeInsets.symmetric(vertical: 8, horizontal: 8),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(10),
+                            color: Colors.green,
+                            boxShadow: [
+                              BoxShadow(
+                                blurRadius: 6,
+                                spreadRadius: 2,
+                                offset: Offset(0, 4),
+                                color: Colors.grey,
+                              ),
+                            ],
+                          ),
+                          child: Text(
+                            "Add to Cart",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: Colors.white,
+                            ),
                           ),
                         ),
                       ),
@@ -230,7 +342,6 @@ class _ProductDetailsState extends State<ProductDetails> {
                 ],
               ),
             ),
-         
             SizedBox(height: 4),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -484,7 +595,7 @@ class _ProductImageCarouselState extends State<ProductImageCarousel> {
           ),
         ),
         Positioned(
-          top: 35,
+          top: 45,
           left: 10,
           right: 10,
           child: Row(

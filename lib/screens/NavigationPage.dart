@@ -161,7 +161,7 @@ class _NavigationpageState extends State<Navigationpage> {
             right: 24,
             child: Container(
               height: 60,
-              padding: EdgeInsets.all(12),
+              padding: EdgeInsets.only(right: 12, left: 12),
               decoration: BoxDecoration(
                 color: bottomNavBgColor.withOpacity(0.8),
                 borderRadius: BorderRadius.all(Radius.circular(24)),
@@ -199,21 +199,28 @@ class _NavigationpageState extends State<Navigationpage> {
           PageIndex = index;
         });
       },
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(icon, color: Colors.white),
-          SizedBox(height: 4),
-          if (isSelected) // Show underline only for the selected icon
-            Container(
-              height: 3,
-              width: 20,
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(2),
-              ),
-            ),
-        ],
+      child: Container(
+        height: 50,
+        width: 50,
+        // color: Colors.amber,
+        child: Center(
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Icon(icon, color: Colors.white),
+              SizedBox(height: 4),
+              if (isSelected) // Show underline only for the selected icon
+                Container(
+                  height: 3,
+                  width: 20,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
+            ],
+          ),
+        ),
       ),
     );
   }
