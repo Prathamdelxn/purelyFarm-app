@@ -1,3 +1,4 @@
+import 'package:ecom/screens/productDetails.dart';
 import 'package:flutter/material.dart';
 
 class Cartpage extends StatefulWidget {
@@ -264,81 +265,90 @@ class _CartpageState extends State<Cartpage> {
                                 SizedBox(
                                   width: 10,
                                 ),
-                                Container(
-                                  height: 230,
-                                  width: 150,
-                                  padding: EdgeInsets.all(5),
-                                  decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(10),
-                                      color: const Color.fromARGB(
-                                          255, 146, 239, 160),
-                                      border: Border.all(
-                                          color: Colors.grey, width: 2)),
-                                  child: Column(
-                                    children: [
-                                      ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                          child: Image.asset(
-                                              "assets/images/fruits.png")),
-                                      Text(
-                                        "Special Fruits",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w700,
-                                            fontSize: 14),
-                                      ),
-                                      Text(
-                                        "500 gm",
-                                        style: TextStyle(
-                                            fontWeight: FontWeight.w600,
-                                            color: const Color.fromARGB(
-                                                255, 108, 107, 107)),
-                                      ),
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: [
-                                          Text(
-                                            "₹ 20",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w700,
-                                                fontSize: 20),
-                                          ),
-                                          SizedBox(
-                                            width: 20,
-                                          ),
-                                          Text(
-                                            " 50",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w700,
-                                                color: Colors.grey,
-                                                decoration:
-                                                    TextDecoration.lineThrough,
-                                                fontSize: 18),
-                                          )
-                                        ],
-                                      ),
-                                      SizedBox(
-                                        height: 4,
-                                      ),
-                                      Container(
-                                        height: 28,
-                                        width: 120,
-                                        decoration: BoxDecoration(
-                                            color: const Color.fromARGB(
-                                                255, 18, 101, 21),
+                                GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                ProductDetails()));
+                                  },
+                                  child: Container(
+                                    height: 230,
+                                    width: 150,
+                                    padding: EdgeInsets.all(5),
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: const Color.fromARGB(
+                                            255, 146, 239, 160),
+                                        border: Border.all(
+                                            color: Colors.grey, width: 2)),
+                                    child: Column(
+                                      children: [
+                                        ClipRRect(
                                             borderRadius:
-                                                BorderRadius.circular(5)),
-                                        child: Center(
-                                          child: Text(
-                                            "Add to Cart",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w700,
-                                                color: Colors.white),
-                                          ),
+                                                BorderRadius.circular(8),
+                                            child: Image.asset(
+                                                "assets/images/fruits.png")),
+                                        Text(
+                                          "Special Fruits",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 14),
                                         ),
-                                      )
-                                    ],
+                                        Text(
+                                          "500 gm",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              color: const Color.fromARGB(
+                                                  255, 108, 107, 107)),
+                                        ),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            Text(
+                                              "₹ 20",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w700,
+                                                  fontSize: 20),
+                                            ),
+                                            SizedBox(
+                                              width: 20,
+                                            ),
+                                            Text(
+                                              " 50",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w700,
+                                                  color: Colors.grey,
+                                                  decoration: TextDecoration
+                                                      .lineThrough,
+                                                  fontSize: 18),
+                                            )
+                                          ],
+                                        ),
+                                        SizedBox(
+                                          height: 4,
+                                        ),
+                                        Container(
+                                          height: 28,
+                                          width: 120,
+                                          decoration: BoxDecoration(
+                                              color: const Color.fromARGB(
+                                                  255, 18, 101, 21),
+                                              borderRadius:
+                                                  BorderRadius.circular(5)),
+                                          child: Center(
+                                            child: Text(
+                                              "Add to Cart",
+                                              style: TextStyle(
+                                                  fontWeight: FontWeight.w700,
+                                                  color: Colors.white),
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 )
                               ],
