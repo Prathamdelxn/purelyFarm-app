@@ -78,6 +78,18 @@ flutter:
     - assets/placeholder1.png
     - assets/notiy.svg
     - assets/images/
+    - assets/coupon.png
+    - assets/delivery-truck 1.png
+    - assets/cartimg.png
+    - assets/customer-service.png
+    - assets/usericon.jpg
+    - assets/return.png
+    - assets/order.png
+    - assets/medal.png
+    - assets/location-pin.png
+    - assets/list.png
+    - assets/gift.png
+    - assets/cute.gif
     
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
@@ -90,15 +102,14 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
+  fonts:
+    - family: Montserrat
+      fonts:
+        - asset: fonts/Montserrat-Bold.ttf
+  
+    - family: Montserratmedium
+      fonts:
+        - asset: fonts/Montserrat-Medium.ttf
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #

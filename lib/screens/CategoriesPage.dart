@@ -1,5 +1,7 @@
 import 'dart:async';
+import 'dart:developer';
 
+import 'package:ecom/screens/Vegitables.dart';
 import 'package:flutter/material.dart';
 
 class CategoriesPage extends StatefulWidget {
@@ -14,7 +16,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
     {'image': 'assets/images/dryfruits.png', 'name': 'DryFruits'},
     {'image': 'assets/images/fruits.png', 'name': 'Fruits'},
     {'image': 'assets/images/grains.png', 'name': 'Grains'},
-    {'image': 'assets/images/vegitables.png', 'name': 'Vegitables'},
+    {'image': 'assets/images/vegitables.png', 'name': 'Vegetables'},
   ];
 
   @override
@@ -22,9 +24,12 @@ class _CategoriesPageState extends State<CategoriesPage> {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
     return Scaffold(
+      backgroundColor: Colors.white,
       // backgroundColor: Colors.amberAccent,
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(255, 45, 164, 45),
+        automaticallyImplyLeading: false,
+        // backgroundColor: const Color.fromARGB(255, 45, 164, 45),
+        backgroundColor: const Color.fromARGB(255, 7, 77, 10),
         centerTitle: true,
         title: Text(
           "All Categories",
@@ -34,16 +39,6 @@ class _CategoriesPageState extends State<CategoriesPage> {
             color: Colors.white,
           ),
         ),
-        actions: [
-          IconButton(
-            onPressed: () {},
-            icon: Icon(
-              Icons.search,
-              size: width * 0.07,
-              color: Colors.white,
-            ),
-          ),
-        ],
       ),
       body: Column(
         children: [
@@ -56,7 +51,10 @@ class _CategoriesPageState extends State<CategoriesPage> {
                 Text(
                   "Categories",
                   style: TextStyle(
-                      fontSize: width * 0.065, fontWeight: FontWeight.bold),
+                    fontSize: width * 0.065,
+                    fontWeight: FontWeight.bold,
+                    // fontFamily: 'Montserrat',
+                  ),
                 ),
                 SizedBox(height: height * 0.01),
                 GridView.count(
@@ -90,78 +88,72 @@ class _CategoriesPageState extends State<CategoriesPage> {
             ),
           ),
           const Spacer(),
-          CustomRow(),
-        ],
-      ),
-    );
-  }
-}
-
-class CustomRow extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final width = MediaQuery.of(context).size.width;
-    final height = MediaQuery.of(context).size.height;
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: width * 0.015),
-      decoration: BoxDecoration(color: Colors.grey[800]),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            width: width * 0.09,
-            height: width * 0.09,
-            decoration: BoxDecoration(
-              color: Colors.grey[700],
-              shape: BoxShape.circle,
-            ),
-            child: Icon(
-              Icons.lock,
-              color: const Color.fromARGB(255, 45, 164, 45),
-              size: width * 0.06,
-            ),
-          ),
-          Text(
-            "Add items worth ₹27 to get Free Delivery",
-            style: TextStyle(
-              fontSize: width * 0.029,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
-            ),
-          ),
-          Container(
-            // padding: EdgeInsets.symmetric(vertical: 5),
-            margin: EdgeInsets.symmetric(vertical: height * 0.015),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(width * 0.025),
-              color: const Color.fromARGB(255, 45, 164, 45),
-            ),
-            child: Column(
-              children: [
-                Text(
-                  "You Saved",
-                  style: TextStyle(
-                    fontSize: width * 0.030,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                Container(
-                  height: height * 0.002,
-                  color: Colors.grey[800],
-                  width: width * 0.24,
-                ),
-                Text(
-                  "₹8",
-                  style: TextStyle(
-                    fontSize: width * 0.030,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-              ],
-            ),
-          ),
+          // Container(
+          //   padding: EdgeInsets.symmetric(horizontal: width * 0.015),
+          //   decoration: BoxDecoration(color: Colors.grey[800]),
+          //   child: Row(
+          //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //     children: [
+          //       Container(
+          //         width: width * 0.09,
+          //         height: width * 0.09,
+          //         decoration: BoxDecoration(
+          //           color: Colors.grey[700],
+          //           shape: BoxShape.circle,
+          //         ),
+          //         child: Icon(
+          //           Icons.lock,
+          //           color: const Color.fromARGB(255, 45, 164, 45),
+          //           size: width * 0.06,
+          //         ),
+          //       ),
+          //       Text(
+          //         "Add items worth ₹27 to get Free Delivery",
+          //         style: TextStyle(
+          //           fontSize: width * 0.029,
+          //           fontWeight: FontWeight.bold,
+          //           color: Colors.white,
+          //         ),
+          //       ),
+          //       Container(
+          //         // padding: EdgeInsets.symmetric(vertical: 5),
+          //         margin: EdgeInsets.symmetric(vertical: height * 0.015),
+          //         decoration: BoxDecoration(
+          //           borderRadius: BorderRadius.circular(width * 0.025),
+          //           color: const Color.fromARGB(255, 45, 164, 45),
+          //         ),
+          //         child: Column(
+          //           children: [
+          //             Text(
+          //               "You Saved",
+          //               style: TextStyle(
+          //                 fontSize: width * 0.030,
+          //                 fontWeight: FontWeight.bold,
+          //                 color: Colors.white,
+          //               ),
+          //             ),
+          //             Container(
+          //               height: height * 0.002,
+          //               color: Colors.grey[800],
+          //               width: width * 0.24,
+          //             ),
+          //             Text(
+          //               "₹8",
+          //               style: TextStyle(
+          //                 fontSize: width * 0.030,
+          //                 fontWeight: FontWeight.bold,
+          //                 color: Colors.white,
+          //               ),
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          // SizedBox(
+          //   height: 90,
+          // )
         ],
       ),
     );
@@ -173,50 +165,76 @@ class ImageWithGradientBox extends StatelessWidget {
   String name;
   ImageWithGradientBox(this.image, this.name);
 
+  void CategoryRouting(String name, context) {
+    if (name == "Vegetables") {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => Vegitables()));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
     final height = MediaQuery.of(context).size.height;
-    return Container(
-      width: width * 0.7,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Container(
-            width: width * 0.7,
-            height: height * 0.16,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10),
-              border: Border.all(
-                color: Colors.white,
-                width: width * 0.007,
-              ),
-              image: DecorationImage(
-                image: AssetImage(image),
-                // image: AssetImage("assets/Healthy food.png"),
-                fit: BoxFit.cover,
-              ),
+    return GestureDetector(
+      onTap: () {
+        CategoryRouting(name, context);
+      },
+      child: Container(
+        width: width * 0.7,
+        decoration: BoxDecoration(boxShadow: [
+          BoxShadow(
+            color: Color.fromRGBO(0, 0, 0, 0.35),
+            blurRadius: 15,
+            spreadRadius: 0,
+            offset: Offset(
+              0,
+              5,
             ),
           ),
-          Container(
-            width: width * 0.7,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(10),
-                bottomRight: Radius.circular(10),
+        ]),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: width * 0.7,
+              height: height * 0.16,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(
+                  color: Colors.white,
+                  width: width * 0.007,
+                ),
+                image: DecorationImage(
+                  image: AssetImage(image),
+                  // image: AssetImage("assets/Healthy food.png"),
+                  fit: BoxFit.cover,
+                ),
               ),
             ),
-            child: Text(
-              name,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: width * 0.04,
-                fontWeight: FontWeight.bold,
+            Container(
+              width: width * 0.7,
+              height: 40,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(10),
+                  bottomRight: Radius.circular(10),
+                ),
               ),
-              textAlign: TextAlign.center,
+              child: Center(
+                child: Text(
+                  name,
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: width * 0.04,
+                    fontWeight: FontWeight.bold,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

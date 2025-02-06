@@ -84,6 +84,7 @@ class _VegitablesState extends State<Vegitables> {
         ],
       ),
       body: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Container(
             width: 90,
@@ -128,7 +129,7 @@ class _VegitablesState extends State<Vegitables> {
               children: [
                 Container(
                   height: height * 0.18,
-                  width: 291,
+                  width: 311,
                   padding: EdgeInsets.only(left: 15, top: 30),
                   decoration: BoxDecoration(
                     color: Colors.black,
@@ -199,8 +200,7 @@ class _VegitablesState extends State<Vegitables> {
                 ),
                 Expanded(
                   child: SizedBox(
-                    width: width * 0.7,
-                    // height: height * 0.7,
+                    width: width * 0.72,
                     child: GridView.builder(
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
@@ -262,12 +262,15 @@ class _VegitablesState extends State<Vegitables> {
   Widget ProductCard(
       String image, String name, String weight, double stars, double price) {
     return Container(
+      padding: EdgeInsets.all(5),
       decoration: BoxDecoration(
         // color: Colors.white,
+        border:
+            Border.all(color: const Color.fromARGB(255, 2, 100, 5), width: 1),
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.1),
+            color: const Color.fromARGB(255, 229, 239, 231),
             blurRadius: 5,
             spreadRadius: 2,
           ),
@@ -310,8 +313,11 @@ class _VegitablesState extends State<Vegitables> {
           ),
           const SizedBox(height: 5),
           Container(
-            padding: EdgeInsets.only(right: 3, left: 2),
-            color: Colors.amber,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              color: Colors.amber,
+            ),
+            padding: EdgeInsets.only(right: 5, left: 5),
             child: Row(
               mainAxisSize: MainAxisSize.min,
               children: [
@@ -319,7 +325,10 @@ class _VegitablesState extends State<Vegitables> {
                 const SizedBox(width: 4),
                 Text(
                   stars.toString(),
-                  style: const TextStyle(fontSize: 14, color: Colors.white),
+                  style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.white),
                 ),
               ],
             ),
@@ -333,22 +342,24 @@ class _VegitablesState extends State<Vegitables> {
             ),
           ),
           const SizedBox(height: 8),
-          Container(
-            width: 140,
-            height: 40,
-            alignment: Alignment.center,
-            decoration: BoxDecoration(
-                border: Border.all(
+          Center(
+            child: Container(
+              width: 130,
+              height: 40,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  border: Border.all(
+                    color: Colors.green,
+                    width: 2,
+                  ),
+                  borderRadius: BorderRadius.circular(10)),
+              child: Text(
+                "Add to Cart",
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
                   color: Colors.green,
-                  width: 2,
                 ),
-                borderRadius: BorderRadius.circular(10)),
-            child: Text(
-              "Add to Cart",
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: Colors.green,
               ),
             ),
           ),

@@ -1,5 +1,5 @@
 import 'package:ecom/screens/NavigationPage.dart';
-import 'package:ecom/screens/homePage.dart';
+import 'package:ecom/screens/HomePage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 
@@ -91,10 +91,9 @@ class _OtpPageState extends State<OtpPage> {
             SizedBox(height: 100),
             GestureDetector(
               onTap: () {
-                Navigator.push(
-                    context,
-                    // MaterialPageRoute(builder: (context) => Homepage()));
-                    MaterialPageRoute(builder: (context) => HomePage()));
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => Navigationpage()));
+                // MaterialPageRoute(builder: (context) => NavigationPage()));
               },
               child: Container(
                 height: 50,

@@ -17,8 +17,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      // home: Splashscreen(),
-      home: NavigationPage(),
+      home: Splashscreen(),
+      // home: NavigationPage(),
     );
   }
 }
