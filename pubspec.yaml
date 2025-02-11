@@ -41,6 +41,7 @@ dependencies:
   flutter_svg: ^2.0.17
   circle_bottom_navigation: ^2.0.0
   top_snackbar_flutter: ^3.2.0
+  carousel_slider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
@@ -91,6 +92,16 @@ flutter:
     - assets/list.png
     - assets/gift.png
     - assets/cute.gif
+    - assets/location.png
+    - assets/add-location.svg
+    - assets/addnewaddress.png
+    - assets/fast-delivery 1.svg
+    - assets/save 1.svg
+    - assets/shoppay.png
+    - assets/money (1) 1.svg
+    - assets/Vector (2).svg
+    - assets/splashnew.png
+   
     
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

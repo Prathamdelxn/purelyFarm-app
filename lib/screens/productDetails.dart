@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:ecom/screens/NavigationPage.dart';
 import 'package:ecom/screens/cartPage.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -71,98 +72,117 @@ class _ProductDetailsState extends State<ProductDetails> {
     'assets/images/tomato.png', // Add your additional image assets
   ];
 
-  int count = 1;
-
   Future<void> bottomsheet(BuildContext context) {
+    int count = 1; // Define count inside the function
+
     return showModalBottomSheet(
       context: context,
       builder: (BuildContext context) {
-        return Container(
-            color: Colors.white,
-            height: 100, // Adjust height as needed
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Cartpage()));
-                  },
-                  child: Container(
-                    height: 70,
-                    width: 200,
-                    decoration: BoxDecoration(
+        return StatefulBuilder(
+          builder: (BuildContext context, StateSetter setState) {
+            // Local setState
+            return Container(
+              color: Colors.white,
+              height: 100,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  GestureDetector(
+                    onTap: () {
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => Cartpage()),
+                      // );
+
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              Navigationpage(selectedIndex: 2), // Pass index 2
+                        ),
+                      );
+                    },
+                    child: Container(
+                      height: 70,
+                      width: 200,
+                      decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(10),
                         border: Border.all(
-                            color: const Color.fromARGB(255, 6, 93, 9),
-                            width: 2)),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          Icons.shopping_cart,
-                          size: 30,
+                          color: const Color.fromARGB(255, 6, 93, 9),
+                          width: 2,
                         ),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Text(
-                          "View Cart",
-                          style: TextStyle(
+                      ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.shopping_cart,
+                            size: 30,
+                          ),
+                          SizedBox(width: 10),
+                          Text(
+                            "View Cart",
+                            style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w700,
-                              color: Colors.black),
-                        )
+                              color: Colors.black,
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    height: 70,
+                    width: 200,
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: const Color.fromARGB(255, 7, 77, 10),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            setState(() {
+                              // Use StatefulBuilder's setState
+                              count++;
+                            });
+                          },
+                          icon: Icon(
+                            Icons.add,
+                            size: 24,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Text(
+                          "$count", // Now updates in real-time!
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            setState(() {
+                              if (count > 0) count--; // Prevent negative values
+                            });
+                          },
+                          icon: Icon(
+                            Icons.remove,
+                            color: Colors.white,
+                          ),
+                        ),
                       ],
                     ),
                   ),
-                ),
-                Container(
-                  height: 70,
-                  width: 200,
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: const Color.fromARGB(255, 7, 77, 10),
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                        onPressed: () {
-                          setState(() {
-                            count++;
-                          });
-                        },
-                        icon: Icon(
-                          Icons.add,
-                          size: 24,
-                          color: Colors.white,
-                        ),
-                      ),
-                      Text(
-                        "$count",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w700),
-                      ),
-                      IconButton(
-                        onPressed: () {
-                          setState(() {
-                            count--;
-                          });
-                        },
-                        icon: Icon(
-                          Icons.remove,
-                          color: Colors.white,
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-              ],
-            ));
+                ],
+              ),
+            );
+          },
+        );
       },
     );
   }

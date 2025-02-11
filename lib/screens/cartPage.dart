@@ -1,5 +1,8 @@
+import 'package:ecom/screens/addressAdd.dart';
+import 'package:ecom/screens/paymentscreen.dart';
 import 'package:ecom/screens/productDetails.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class Cartpage extends StatefulWidget {
   const Cartpage({super.key});
@@ -10,6 +13,200 @@ class Cartpage extends StatefulWidget {
 
 class _CartpageState extends State<Cartpage> {
   int count = 1;
+  int selectedAddressIndex = 0;
+  List<Map<dynamic, dynamic>> addresses = [
+    {
+      "address":
+          "Flat no. 201, Shree Classic Society, Behind Maratha Hotel, Narhegaon, Pune -41,",
+      "label": "Home"
+    },
+    {
+      "address": "Flat no. 502, Galaxy Apartment, MG Road, Pune - 411001",
+      "label": "Work"
+    },
+  ];
+  Future<void> openBottomsheet(BuildContext context) {
+    return showModalBottomSheet(
+      context: context,
+      isScrollControlled: true, // Allows dynamic height based on content
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (BuildContext context) {
+        return StatefulBuilder(
+            builder: (BuildContext context, StateSetter setState) {
+          return Padding(
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).viewInsets.bottom),
+            child: SingleChildScrollView(
+              child: Container(
+                width: MediaQuery.of(context).size.width,
+                padding: EdgeInsets.all(20),
+                child: Column(
+                  mainAxisSize: MainAxisSize
+                      .min, // Makes bottom sheet take only needed height
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Select Your Address :",
+                          style: TextStyle(
+                              fontWeight: FontWeight.w700, fontSize: 20),
+                        ),
+                        GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => AddressPage(),
+                                ));
+                          },
+                          child: SvgPicture.asset(
+                            "assets/add-location.svg",
+                            height: 20,
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 10,
+                    ),
+                    // Dynamic ListView
+
+                    Container(
+                      width: MediaQuery.of(context).size.width,
+                      padding: EdgeInsets.all(20),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          ListView.builder(
+                            shrinkWrap:
+                                true, // Ensures ListView takes only required space
+                            physics:
+                                NeverScrollableScrollPhysics(), // Prevents nested scrolling issues
+                            itemCount: addresses
+                                .length, // Dynamic based on address list
+                            itemBuilder: (BuildContext context, int index) {
+                              return GestureDetector(
+                                onTap: () {
+                                  setState(() {
+                                    selectedAddressIndex =
+                                        index; // Update selection
+                                  });
+                                },
+                                child: Container(
+                                  margin: EdgeInsets.only(bottom: 10),
+                                  padding: EdgeInsets.all(12),
+                                  width:
+                                      MediaQuery.of(context).size.width * 0.9,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(
+                                      color: selectedAddressIndex == index
+                                          ? Colors.green // Highlight selected
+                                          : Colors.black,
+                                      width: 2,
+                                    ),
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Container(
+                                        height: 30,
+                                        width: 80,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          color: Colors.amber,
+                                        ),
+                                        child: Center(
+                                          child: Text(
+                                            addresses[index]["label"],
+                                            style: TextStyle(
+                                              fontWeight: FontWeight.w700,
+                                              fontSize: 14,
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                      SizedBox(height: 10),
+                                      Row(
+                                        children: [
+                                          Radio(
+                                            value: index,
+                                            groupValue: selectedAddressIndex,
+                                            onChanged: (int? value) {
+                                              setState(() {
+                                                selectedAddressIndex = value!;
+                                              });
+                                            },
+                                            activeColor: Colors
+                                                .green, // Change selected color
+                                          ),
+                                          SizedBox(width: 10),
+                                          Expanded(
+                                            child: Text(
+                                              addresses[index]["address"],
+                                              style: TextStyle(
+                                                fontSize: 16,
+                                                fontWeight: FontWeight.w700,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+
+                          //
+                        ],
+                      ),
+                    ),
+                    // SizedBox(height: 20),
+                    // Continue Button
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Paymentscreen()));
+                      },
+                      child: Container(
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        height: 60,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: const Color.fromARGB(255, 7, 77, 10),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Continue with this Address",
+                            style: TextStyle(
+                              fontSize: 18,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: 20),
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -362,20 +559,25 @@ class _CartpageState extends State<Cartpage> {
                     SizedBox(
                       height: 10,
                     ),
-                    Container(
-                      height: 60,
-                      width: MediaQuery.of(context).size.width * 0.9,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        color: Colors.red,
-                      ),
-                      child: Center(
-                        child: Text(
-                          "Add Address to Procced",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w700,
-                              fontSize: 20,
-                              color: Colors.white),
+                    GestureDetector(
+                      onTap: () {
+                        openBottomsheet(context);
+                      },
+                      child: Container(
+                        height: 60,
+                        width: MediaQuery.of(context).size.width * 0.9,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          color: const Color.fromARGB(255, 7, 77, 10),
+                        ),
+                        child: Center(
+                          child: Text(
+                            "Add Address to Procced",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w700,
+                                fontSize: 20,
+                                color: Colors.white),
+                          ),
                         ),
                       ),
                     )

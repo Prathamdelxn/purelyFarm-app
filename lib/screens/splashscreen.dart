@@ -18,7 +18,7 @@ class _State extends State<Splashscreen> {
   }
 
   _navigateToHomeScreen() {
-    Future.delayed(Duration(seconds: 5), () {
+    Future.delayed(Duration(seconds: 15), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => Landingpage()),
@@ -39,8 +39,8 @@ class _State extends State<Splashscreen> {
               height: MediaQuery.of(context).size.height,
               width: MediaQuery.of(context).size.width,
               child: Image.asset(
-                "assets/splashimage.jpeg",
-                fit: BoxFit.fitHeight,
+                "assets/splashnew.png",
+                fit: BoxFit.cover,
               ),
             ),
           ],
