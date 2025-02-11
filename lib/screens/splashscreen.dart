@@ -18,7 +18,7 @@ class _State extends State<Splashscreen> {
   }
 
   _navigateToHomeScreen() {
-    Future.delayed(Duration(seconds: 15), () {
+    Future.delayed(Duration(seconds: 5), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => Landingpage()),

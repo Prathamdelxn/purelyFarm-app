@@ -11,14 +11,26 @@ class Paymentscreen extends StatefulWidget {
 
 class _PaymentscreenState extends State<Paymentscreen> {
   final List<Map<String, String>> charges = [
-    {"label": "Item Total", "amount": "₹124", "icon": "assets/Vector (2).svg"},
-    {"label": "GST Charges", "amount": "₹194", "icon": "assets/Vector (2).svg"},
+    {
+      "label": "Item Total",
+      "amount": "₹124",
+      "icon": "assets/svgs/total.svg"
+    },
+    {
+      "label": "GST Charges",
+      "amount": "₹194",
+      "icon": "assets/svgs/gst.svg"
+    },
     {
       "label": "Delivery Fee",
       "amount": "₹524",
-      "icon": "assets/Vector (2).svg"
+      "icon": "assets/svgs/delivery-truck.svg"
     },
-    {"label": "Platform Fee", "amount": "₹14", "icon": "assets/Vector (2).svg"},
+    {
+      "label": "Platform Fee",
+      "amount": "₹14",
+      "icon": "assets/svgs/platform.svg"
+    },
   ];
 
   @override
@@ -90,8 +102,7 @@ class _PaymentscreenState extends State<Paymentscreen> {
                       separatorBuilder: (context, index) => Divider(height: 1),
                       itemBuilder: (context, index) {
                         return Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 20, vertical: 16),
+                          padding: EdgeInsets.symmetric(horizontal: 20, vertical: 16),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
@@ -134,8 +145,7 @@ class _PaymentscreenState extends State<Paymentscreen> {
 
                   // Bill Summary
                   Container(
-                    margin: EdgeInsets.only(
-                        top: 24, left: 24, right: 24, bottom: 16),
+                    margin: EdgeInsets.only(top: 24, left: 24, right: 24, bottom: 16),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
@@ -167,8 +177,7 @@ class _PaymentscreenState extends State<Paymentscreen> {
                     child: Column(
                       children: [
                         ...charges.map((charge) => Container(
-                              padding: EdgeInsets.symmetric(
-                                  horizontal: 16, vertical: 12),
+                              padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                               child: Row(
                                 children: [
                                   SizedBox(
@@ -257,13 +266,11 @@ class _PaymentscreenState extends State<Paymentscreen> {
                             context: context,
                             isScrollControlled: true,
                             backgroundColor: Colors.transparent,
-                            builder: (context) =>
-                                const PaymentMethodBottomSheet(),
+                            builder: (context) => const PaymentMethodBottomSheet(),
                           );
                         },
                         child: Container(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 12),
+                          padding: EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                           decoration: BoxDecoration(
                             color: Colors.grey[100],
                             borderRadius: BorderRadius.circular(12),
@@ -303,18 +310,14 @@ class _PaymentscreenState extends State<Paymentscreen> {
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.green[700],
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(12),
                         ),
                       ),
                       child: Text(
                         "Place Order",
-                        style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.white),
+                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, color: Colors.white),
                       ),
                     ),
                   ],

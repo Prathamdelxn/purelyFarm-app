@@ -101,6 +101,7 @@ flutter:
     - assets/money (1) 1.svg
     - assets/Vector (2).svg
     - assets/splashnew.png
+    - assets/svgs/
    
     
   # An image asset can refer to one or more resolution-specific "variants", see

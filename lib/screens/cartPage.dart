@@ -16,8 +16,7 @@ class _CartpageState extends State<Cartpage> {
   int selectedAddressIndex = 0;
   List<Map<dynamic, dynamic>> addresses = [
     {
-      "address":
-          "Flat no. 201, Shree Classic Society, Behind Maratha Hotel, Narhegaon, Pune -41,",
+      "address": "Flat no. 201, Shree Classic Society, Behind Maratha Hotel, Narhegaon, Pune -41,",
       "label": "Home"
     },
     {
@@ -33,26 +32,22 @@ class _CartpageState extends State<Cartpage> {
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (BuildContext context) {
-        return StatefulBuilder(
-            builder: (BuildContext context, StateSetter setState) {
+        return StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
           return Padding(
-            padding: EdgeInsets.only(
-                bottom: MediaQuery.of(context).viewInsets.bottom),
+            padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
             child: SingleChildScrollView(
               child: Container(
                 width: MediaQuery.of(context).size.width,
                 padding: EdgeInsets.all(20),
                 child: Column(
-                  mainAxisSize: MainAxisSize
-                      .min, // Makes bottom sheet take only needed height
+                  mainAxisSize: MainAxisSize.min, // Makes bottom sheet take only needed height
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           "Select Your Address :",
-                          style: TextStyle(
-                              fontWeight: FontWeight.w700, fontSize: 20),
+                          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
                         ),
                         GestureDetector(
                           onTap: () {
@@ -81,25 +76,20 @@ class _CartpageState extends State<Cartpage> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           ListView.builder(
-                            shrinkWrap:
-                                true, // Ensures ListView takes only required space
-                            physics:
-                                NeverScrollableScrollPhysics(), // Prevents nested scrolling issues
-                            itemCount: addresses
-                                .length, // Dynamic based on address list
+                            shrinkWrap: true, // Ensures ListView takes only required space
+                            physics: NeverScrollableScrollPhysics(), // Prevents nested scrolling issues
+                            itemCount: addresses.length, // Dynamic based on address list
                             itemBuilder: (BuildContext context, int index) {
                               return GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    selectedAddressIndex =
-                                        index; // Update selection
+                                    selectedAddressIndex = index; // Update selection
                                   });
                                 },
                                 child: Container(
                                   margin: EdgeInsets.only(bottom: 10),
                                   padding: EdgeInsets.all(12),
-                                  width:
-                                      MediaQuery.of(context).size.width * 0.9,
+                                  width: MediaQuery.of(context).size.width * 0.9,
                                   decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10),
                                     border: Border.all(
@@ -110,15 +100,13 @@ class _CartpageState extends State<Cartpage> {
                                     ),
                                   ),
                                   child: Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
+                                    crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
                                       Container(
                                         height: 30,
                                         width: 80,
                                         decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
+                                          borderRadius: BorderRadius.circular(10),
                                           color: Colors.amber,
                                         ),
                                         child: Center(
@@ -142,8 +130,7 @@ class _CartpageState extends State<Cartpage> {
                                                 selectedAddressIndex = value!;
                                               });
                                             },
-                                            activeColor: Colors
-                                                .green, // Change selected color
+                                            activeColor: Colors.green, // Change selected color
                                           ),
                                           SizedBox(width: 10),
                                           Expanded(
@@ -172,10 +159,7 @@ class _CartpageState extends State<Cartpage> {
                     // Continue Button
                     GestureDetector(
                       onTap: () {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => Paymentscreen()));
+                        Navigator.push(context, MaterialPageRoute(builder: (context) => Paymentscreen()));
                       },
                       child: Container(
                         width: MediaQuery.of(context).size.width * 0.9,
@@ -215,8 +199,7 @@ class _CartpageState extends State<Cartpage> {
         automaticallyImplyLeading: false,
         title: Text(
           "Cart Page",
-          style: TextStyle(
-              fontWeight: FontWeight.w700, fontSize: 24, color: Colors.white),
+          style: TextStyle(fontWeight: FontWeight.w700, fontSize: 24, color: Colors.white),
         ),
         backgroundColor: const Color.fromARGB(255, 7, 77, 10),
         centerTitle: true,
@@ -233,8 +216,7 @@ class _CartpageState extends State<Cartpage> {
                     ),
                     Text(
                       "Cart is Empty",
-                      style:
-                          TextStyle(fontWeight: FontWeight.w700, fontSize: 28),
+                      style: TextStyle(fontWeight: FontWeight.w700, fontSize: 28),
                     ),
                   ],
                 )),
@@ -251,9 +233,7 @@ class _CartpageState extends State<Cartpage> {
                     Container(
                       padding: EdgeInsets.symmetric(horizontal: 10),
                       height: 46,
-                      decoration: BoxDecoration(
-                          color: const Color.fromARGB(255, 146, 239, 160),
-                          borderRadius: BorderRadius.circular(10)),
+                      decoration: BoxDecoration(color: const Color.fromARGB(255, 146, 239, 160), borderRadius: BorderRadius.circular(10)),
                       width: MediaQuery.of(context).size.width * 0.9,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -266,9 +246,7 @@ class _CartpageState extends State<Cartpage> {
                                 Image.asset("assets/coupon.png"),
                                 Text(
                                   "View Coupons & Offers",
-                                  style: TextStyle(
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 18),
+                                  style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
                                 )
                               ],
                             ),
@@ -290,8 +268,7 @@ class _CartpageState extends State<Cartpage> {
                       child: Column(
                         children: [
                           Container(
-                            padding:
-                                EdgeInsets.only(top: 30, left: 30, right: 30),
+                            padding: EdgeInsets.only(top: 30, left: 30, right: 30),
                             child: Column(
                               children: [
                                 Row(
@@ -302,9 +279,7 @@ class _CartpageState extends State<Cartpage> {
                                     ),
                                     Text(
                                       "Delivery in Same Day",
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.w700,
-                                          fontSize: 20),
+                                      style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
                                     )
                                   ],
                                 ),
@@ -312,32 +287,25 @@ class _CartpageState extends State<Cartpage> {
                                   height: 30,
                                 ),
                                 Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                   children: [
                                     Image.asset("assets/cartimg.png"),
                                     Column(
                                       children: [
                                         Text(
                                           "Fruit Local",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 18),
+                                          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
                                         ),
                                         Text(
                                           "500 gm",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 16,
-                                              color: Colors.grey),
+                                          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 16, color: Colors.grey),
                                         )
                                       ],
                                     ),
                                     Container(
                                       width: 70,
                                       child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                         children: [
                                           GestureDetector(
                                               onTap: () {
@@ -361,15 +329,12 @@ class _CartpageState extends State<Cartpage> {
                                       children: [
                                         Text(
                                           "₹10",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.w600,
-                                              fontSize: 18),
+                                          style: TextStyle(fontWeight: FontWeight.w600, fontSize: 18),
                                         ),
                                         Text(
                                           "₹50",
                                           style: TextStyle(
-                                            decoration:
-                                                TextDecoration.lineThrough,
+                                            decoration: TextDecoration.lineThrough,
                                             fontWeight: FontWeight.w600,
                                             fontSize: 16,
                                             color: Colors.grey,
@@ -396,9 +361,7 @@ class _CartpageState extends State<Cartpage> {
                               children: [
                                 Text(
                                   "Missed Something ?",
-                                  style: TextStyle(
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w700),
+                                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
                                 ),
                                 Container(
                                   height: 30,
@@ -408,8 +371,7 @@ class _CartpageState extends State<Cartpage> {
                                     color: Colors.green,
                                   ),
                                   child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceAround,
+                                    mainAxisAlignment: MainAxisAlignment.spaceAround,
                                     children: [
                                       Icon(
                                         Icons.add,
@@ -417,10 +379,7 @@ class _CartpageState extends State<Cartpage> {
                                       ),
                                       Text(
                                         "Add More Items",
-                                        style: TextStyle(
-                                            fontSize: 12,
-                                            color: Colors.white,
-                                            fontWeight: FontWeight.w700),
+                                        style: TextStyle(fontSize: 12, color: Colors.white, fontWeight: FontWeight.w700),
                                       )
                                     ],
                                   ),
@@ -440,8 +399,7 @@ class _CartpageState extends State<Cartpage> {
                         children: [
                           Text(
                             "You might also like",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w700, fontSize: 18),
+                            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 18),
                           ),
                           SizedBox(
                             width: 8,
@@ -468,64 +426,37 @@ class _CartpageState extends State<Cartpage> {
                                   ),
                                   GestureDetector(
                                     onTap: () {
-                                      Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) =>
-                                                  ProductDetails()));
+                                      Navigator.push(context, MaterialPageRoute(builder: (context) => ProductDetails()));
                                     },
                                     child: Container(
                                       height: 230,
                                       width: 150,
                                       padding: EdgeInsets.all(5),
-                                      decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                          color: const Color.fromARGB(
-                                              255, 146, 239, 160),
-                                          border: Border.all(
-                                              color: Colors.grey, width: 2)),
+                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), color: const Color.fromARGB(255, 146, 239, 160), border: Border.all(color: Colors.grey, width: 2)),
                                       child: Column(
                                         children: [
-                                          ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8),
-                                              child: Image.asset(
-                                                  "assets/images/fruits.png")),
+                                          ClipRRect(borderRadius: BorderRadius.circular(8), child: Image.asset("assets/images/fruits.png")),
                                           Text(
                                             "Special Fruits",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w700,
-                                                fontSize: 14),
+                                            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 14),
                                           ),
                                           Text(
                                             "500 gm",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w600,
-                                                color: const Color.fromARGB(
-                                                    255, 108, 107, 107)),
+                                            style: TextStyle(fontWeight: FontWeight.w600, color: const Color.fromARGB(255, 108, 107, 107)),
                                           ),
                                           Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
+                                            mainAxisAlignment: MainAxisAlignment.center,
                                             children: [
                                               Text(
                                                 "₹ 20",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w700,
-                                                    fontSize: 20),
+                                                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
                                               ),
                                               SizedBox(
                                                 width: 20,
                                               ),
                                               Text(
                                                 " 50",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w700,
-                                                    color: Colors.grey,
-                                                    decoration: TextDecoration
-                                                        .lineThrough,
-                                                    fontSize: 18),
+                                                style: TextStyle(fontWeight: FontWeight.w700, color: Colors.grey, decoration: TextDecoration.lineThrough, fontSize: 18),
                                               )
                                             ],
                                           ),
@@ -535,17 +466,11 @@ class _CartpageState extends State<Cartpage> {
                                           Container(
                                             height: 28,
                                             width: 120,
-                                            decoration: BoxDecoration(
-                                                color: const Color.fromARGB(
-                                                    255, 18, 101, 21),
-                                                borderRadius:
-                                                    BorderRadius.circular(5)),
+                                            decoration: BoxDecoration(color: const Color.fromARGB(255, 18, 101, 21), borderRadius: BorderRadius.circular(5)),
                                             child: Center(
                                               child: Text(
                                                 "Add to Cart",
-                                                style: TextStyle(
-                                                    fontWeight: FontWeight.w700,
-                                                    color: Colors.white),
+                                                style: TextStyle(fontWeight: FontWeight.w700, color: Colors.white),
                                               ),
                                             ),
                                           )
@@ -565,6 +490,7 @@ class _CartpageState extends State<Cartpage> {
                       },
                       child: Container(
                         height: 60,
+                        margin: EdgeInsets.only(bottom: 100),
                         width: MediaQuery.of(context).size.width * 0.9,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10),
@@ -573,10 +499,7 @@ class _CartpageState extends State<Cartpage> {
                         child: Center(
                           child: Text(
                             "Add Address to Procced",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w700,
-                                fontSize: 20,
-                                color: Colors.white),
+                            style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20, color: Colors.white),
                           ),
                         ),
                       ),
@@ -590,8 +513,7 @@ class _CartpageState extends State<Cartpage> {
 }
 
 class MySeparator extends StatelessWidget {
-  const MySeparator({Key? key, this.height = 2, this.color = Colors.black})
-      : super(key: key);
+  const MySeparator({Key? key, this.height = 2, this.color = Colors.black}) : super(key: key);
   final double height;
   final Color color;
 
