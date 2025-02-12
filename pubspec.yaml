@@ -42,6 +42,7 @@ dependencies:
   circle_bottom_navigation: ^2.0.0
   top_snackbar_flutter: ^3.2.0
   carousel_slider: ^5.0.0
+  flutter_inset_shadow: ^2.0.3
 
 dev_dependencies:
   flutter_test:
@@ -102,6 +103,13 @@ flutter:
     - assets/Vector (2).svg
     - assets/splashnew.png
     - assets/svgs/
+    - assets/banner.png
+    - assets/categoriesImg/fruits.jpeg
+    - assets/categoriesImg/DryFruitsImages/Almond.svg
+    - assets/categoriesImg/DryFruitsImages/Almond.png
+    - assets/categoriesImg/FruitsImage/Apple.png
+    - assets/categoriesImg/GrainsImages/Rice.png
+    - assets/categoriesImg/vegetablesImage/Broccoli (1).png
    
     
   # An image asset can refer to one or more resolution-specific "variants", see

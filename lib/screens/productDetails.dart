@@ -1,4 +1,4 @@
-import 'dart:developer';
+
 
 import 'package:ecom/screens/NavigationPage.dart';
 import 'package:ecom/screens/cartPage.dart';
@@ -8,7 +8,8 @@ import 'package:top_snackbar_flutter/custom_snack_bar.dart';
 import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 class ProductDetails extends StatefulWidget {
-  const ProductDetails({super.key});
+  final productInfo;
+  const ProductDetails({super.key, required this.productInfo});
 
   @override
   State<ProductDetails> createState() => _ProductDetailsState();
@@ -187,6 +188,7 @@ class _ProductDetailsState extends State<ProductDetails> {
     );
   }
 
+  bool showInfo = true;
   @override
   Widget build(BuildContext context) {
     final width = MediaQuery.of(context).size.width;
@@ -195,7 +197,7 @@ class _ProductDetailsState extends State<ProductDetails> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            ProductImageCarousel(images: productImages),
+            ProductImageCarousel(images: widget.productInfo["relevantImages"]),
             Container(
               padding: EdgeInsets.symmetric(vertical: 16, horizontal: 13),
               margin: EdgeInsets.symmetric(vertical: 10, horizontal: 8),
@@ -219,14 +221,14 @@ class _ProductDetailsState extends State<ProductDetails> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "Tomato",
+                            widget.productInfo["name"],
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 22,
                             ),
                           ),
                           Text(
-                            "500 Gram",
+                            widget.productInfo["Quantity"],
                             style: TextStyle(
                               fontWeight: FontWeight.bold,
                               fontSize: 18,
@@ -237,14 +239,14 @@ class _ProductDetailsState extends State<ProductDetails> {
                             spacing: 10,
                             children: [
                               Text(
-                                "₹20",
+                                "Rs ${widget.productInfo["newPrice"]}",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 19,
                                 ),
                               ),
                               Text(
-                                "MRP ₹26",
+                                "MRP ₹${widget.productInfo["oldPrice"]}",
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     fontSize: 13,
@@ -334,13 +336,28 @@ class _ProductDetailsState extends State<ProductDetails> {
                               fontSize: 18,
                             ),
                           ),
-                          Icon(
-                            Icons.arrow_drop_down_circle,
-                            color: Colors.green,
-                            size: 24,
+                          GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                if (showInfo) {
+                                  showInfo = false;
+                                  print(widget.productInfo["relevantImages"]);
+                                } else {
+                                  showInfo = true;
+                                }
+                              });
+                            },
+                            child: Icon(
+                              !showInfo
+                                  ? Icons.arrow_drop_up_rounded
+                                  : Icons.arrow_drop_down_circle,
+                              color: Colors.green,
+                              size: 24,
+                            ),
                           ),
                         ],
                       ),
+                      Text(showInfo ? "" : widget.productInfo["description"])
                     ],
                   ),
                   SizedBox(
@@ -606,8 +623,10 @@ class _ProductImageCarouselState extends State<ProductImageCarousel> {
                 padding: EdgeInsets.symmetric(horizontal: 10, vertical: 35),
                 decoration: BoxDecoration(
                   image: DecorationImage(
-                    image: AssetImage(widget.images[index]),
-                    fit: BoxFit.fitWidth,
+                    image: NetworkImage(
+                      widget.images[index],
+                    ),
+                    fit: BoxFit.cover,
                   ),
                 ),
               );
@@ -643,8 +662,8 @@ class _ProductImageCarouselState extends State<ProductImageCarousel> {
                 decoration: BoxDecoration(
                   shape: BoxShape.circle,
                   color: _currentIndex == index
-                      ? Colors.white
-                      : Colors.white.withOpacity(0.5),
+                      ? const Color.fromARGB(255, 13, 95, 15)
+                      : Colors.green.withOpacity(0.5),
                 ),
               ),
             ),
