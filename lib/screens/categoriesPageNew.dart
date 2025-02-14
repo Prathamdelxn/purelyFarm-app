@@ -3,6 +3,7 @@ import 'package:ecom/screens/categoriesDetails.dart';
 import 'package:ecom/screens/productDetails.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:http/http.dart' as http;
 
 class NewCategoryPage extends StatefulWidget {
   const NewCategoryPage({super.key});
@@ -163,46 +164,65 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
       "image":
           "https://www.health.com/thmb/vyI49td0j52IBWf_vHVE_DGVZcU=/3950x0/filters:no_upscale():max_bytes(150000):strip_icc()/Health-Stocksy_txp5e95690asrw300_Medium_934585-e870449543284eed8aa4be52fc09a4ed.jpg",
       "name": "Orange",
-      "relevantImages":["https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Ambersweet_oranges.jpg/640px-Ambersweet_oranges.jpg","https://m.media-amazon.com/images/I/51qFSdheDPL._AC_UF1000,1000_QL80_.jpg","https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Orange-Fruit-Pieces.jpg/320px-Orange-Fruit-Pieces.jpg"],
+      "relevantImages": [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Ambersweet_oranges.jpg/640px-Ambersweet_oranges.jpg",
+        "https://m.media-amazon.com/images/I/51qFSdheDPL._AC_UF1000,1000_QL80_.jpg",
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Orange-Fruit-Pieces.jpg/320px-Orange-Fruit-Pieces.jpg"
+      ],
       "category": "Fruits",
       "newPrice": "60",
       "Quantity": "250 gm",
       "oldPrice": "85",
-      "description":"Oranges are a citrus fruit that are high in vitamin C and other nutrients. They are a popular food that can be eaten whole, juiced, or used in marmalades and desserts."
+      "description":
+          "Oranges are a citrus fruit that are high in vitamin C and other nutrients. They are a popular food that can be eaten whole, juiced, or used in marmalades and desserts."
     },
-    
     {
       "image":
           "https://media.istockphoto.com/id/535910387/photo/ripe-organic-green-salad-romano.jpg?s=612x612&w=0&k=20&c=9GTcj_WqUk9LWkzUb6g4MCnLTPAapT_hNMZCHRd3C1U=",
       "name": "Lettuce",
-      "relevantImages":["https://cdn.britannica.com/77/170677-050-F7333D51/lettuce.jpg","https://trikaya.net/cdn/shop/products/LettuceLeafytabletop_800x.jpg?v=1594756664","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQkym2BFCtpK1etDMciFrYw8gwx9W-bI_aBA&s"],
+      "relevantImages": [
+        "https://cdn.britannica.com/77/170677-050-F7333D51/lettuce.jpg",
+        "https://trikaya.net/cdn/shop/products/LettuceLeafytabletop_800x.jpg?v=1594756664",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSQkym2BFCtpK1etDMciFrYw8gwx9W-bI_aBA&s"
+      ],
       "newPrice": "30",
       "Quantity": "1 Kg",
       "oldPrice": "50",
       "category": "Vegetables",
-      "description":"Lettuce, except iceberg, is also a moderately good source of vitamin C, calcium, iron and copper. Look for salad greens that are darker green in color. Iceberg lettuce has little nutritional value. One cup of raw leaf lettuce has 9 calories, 1 gram of protein, and 1.3 grams of fiber."
+      "description":
+          "Lettuce, except iceberg, is also a moderately good source of vitamin C, calcium, iron and copper. Look for salad greens that are darker green in color. Iceberg lettuce has little nutritional value. One cup of raw leaf lettuce has 9 calories, 1 gram of protein, and 1.3 grams of fiber."
     },
     {
       "image":
           "https://cdn.create.vista.com/api/media/small/86610186/stock-photo-fresh-raw-organic-broccoli-in-bowl-closeup",
       "name": "Broccoli",
-      "relevantImages":["https://cdn.britannica.com/25/78225-050-1781F6B7/broccoli-florets.jpg","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoW5SSVP8uwmxIAsHl1HveAsiTgGHhNjoYHQ&s","https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/health-benefits-of-broccoli-1296x728-feature.jpg?w=1155&h=1528"],
+      "relevantImages": [
+        "https://cdn.britannica.com/25/78225-050-1781F6B7/broccoli-florets.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoW5SSVP8uwmxIAsHl1HveAsiTgGHhNjoYHQ&s",
+        "https://i0.wp.com/images-prod.healthline.com/hlcmsresource/images/AN_images/health-benefits-of-broccoli-1296x728-feature.jpg?w=1155&h=1528"
+      ],
       "newPrice": "120",
       "Quantity": "2 Kg",
       "oldPrice": "220",
       "category": "Vegetables",
-      "description":"It contains glucosinolates, which the body can convert into substances that fight cancer. Broccoli's anti-inflammatory, antioxidant, and fiber-rich properties support heart health."
+      "description":
+          "It contains glucosinolates, which the body can convert into substances that fight cancer. Broccoli's anti-inflammatory, antioxidant, and fiber-rich properties support heart health."
     },
     {
       "image":
           "https://plus.unsplash.com/premium_photo-1675365779531-031dfdcdf947?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cG90YXRvfGVufDB8fDB8fHww",
       "name": "Potato",
-      "relevantImages":["https://5.imimg.com/data5/SELLER/Default/2021/2/FG/MB/LY/98166444/whatsapp-image-2021-02-04-at-8-05-27-pm-1--500x500.jpeg","https://media.sciencephoto.com/image/h1103538/800wm","https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROM3MfF2y8cBIFFFA--ek-jOzjc4KqADb8pw&s"],
+      "relevantImages": [
+        "https://5.imimg.com/data5/SELLER/Default/2021/2/FG/MB/LY/98166444/whatsapp-image-2021-02-04-at-8-05-27-pm-1--500x500.jpeg",
+        "https://media.sciencephoto.com/image/h1103538/800wm",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcROM3MfF2y8cBIFFFA--ek-jOzjc4KqADb8pw&s"
+      ],
       "newPrice": "20",
       "Quantity": "100 gm",
       "oldPrice": "35",
       "category": "Vegetables",
-      "description":"The potato is a starchy tuberous vegetable native to the Americas that is consumed as a staple food in many parts of the world. Potatoes are underground tubers of the plant Solanum tuberosum, a perennial in the nightshade family Solanaceae."
+      "description":
+          "The potato is a starchy tuberous vegetable native to the Americas that is consumed as a staple food in many parts of the world. Potatoes are underground tubers of the plant Solanum tuberosum, a perennial in the nightshade family Solanaceae."
     },
     {
       "image":
@@ -255,6 +275,12 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
     return allCategoriesItems
         .where((item) => item["category"] == category)
         .toList();
+  }
+
+  Future<void> data() async {
+    final datas =
+        await http.get(Uri.parse("https://fakestoreapi.com/products/"));
+    print(datas.body);
   }
 
   @override
@@ -313,7 +339,7 @@ class _NewCategoryPageState extends State<NewCategoryPage> {
                                                       allCategoriesItems,
                                                       categories[index]
                                                           ["name"]!);
-                                              print(filterItems);
+                                              data();
 
                                               Navigator.push(
                                                 context,
